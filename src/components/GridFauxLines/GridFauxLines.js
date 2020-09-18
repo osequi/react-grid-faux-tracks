@@ -77,12 +77,18 @@ const Container = styled("div").attrs((props) => ({
   ${GridFauxLinesCss}
 `;
 
+/**
+ * Styles the cell
+ */
 const Cell = styled("div")((props) => ({
   display: "grid",
   alignItems: "center",
   justifyItems: "center",
 }));
 
+/**
+ * Styles the cell content
+ */
 const CellContent = styled("span")((props) => ({
   padding: "5em",
 }));
