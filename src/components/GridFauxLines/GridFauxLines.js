@@ -46,25 +46,36 @@ const defaultProps = {
 };
 
 /**
+ * Creates the faux lines CSS
+ */
+const GridFauxLinesCss = css`
+  & > * {
+    box-sizing: "border-box";
+
+    &: not(: nth-child(${(props) => props.borderLeftException})) {
+      border-left: ${(props) =>
+        props.displayHorizontal ? "1px solid" : "none"};
+    }
+
+    &: not(: nth-child(${(props) => props.borderBottomException})) {
+      border-bottom: ${(props) =>
+        props.displayVertical ? "1px solid" : "none"};
+    }
+  }
+`;
+
+/**
  * Styles the component container
  */
-const Container = styled("div")((props) => ({
-  display: "grid",
-  gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
-  gridTemplateRows: `repeat(${props.rows}, 1fr)`,
-
-  ["& > *"]: {
-    boxSizing: "border-box",
-
-    [`&:not(:nth-child(${props.borderLeftException}))`]: {
-      borderLeft: `${props.displayHorizontal ? "1px solid" : "none"}`,
-    },
-
-    [`&:not(:nth-child(${props.borderBottomException}))`]: {
-      borderBottom: `${props.displayVertical ? "1px solid" : "none"}`,
-    },
+const Container = styled("div").attrs((props) => ({
+  style: {
+    display: "grid",
+    gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
+    gridTemplateRows: `repeat(${props.rows}, 1fr)`,
   },
-}));
+}))`
+  ${GridFauxLinesCss}
+`;
 
 /**
  * Displays the component
