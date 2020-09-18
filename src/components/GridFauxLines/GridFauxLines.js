@@ -77,6 +77,16 @@ const Container = styled("div").attrs((props) => ({
   ${GridFauxLinesCss}
 `;
 
+const Cell = styled("div")((props) => ({
+  display: "grid",
+  alignItems: "center",
+  justifyItems: "center",
+}));
+
+const CellContent = styled("span")((props) => ({
+  padding: "5em",
+}));
+
 /**
  * Displays the component
  */
@@ -92,7 +102,11 @@ const GridFauxLines = (props) => {
     : Array(columns * rows)
         .fill("x")
         .map((item, index) => {
-          return <div key={shortid.generate()}>{index + 1}</div>;
+          return (
+            <Cell key={shortid.generate()}>
+              <CellContent>{index + 1}</CellContent>
+            </Cell>
+          );
         });
 
   const lastRow = columns * rows - columns + 1;
