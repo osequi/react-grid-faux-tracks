@@ -18,6 +18,11 @@ const propTypes = {
    */
   rows: PropTypes.number,
   /**
+   * Which lines to display
+   * @type {string}
+   */
+  lines: PropTypes.oneOf(["horizontal", "vertical", "both"]),
+  /**
    * The grid items
    * @type {any}
    */
@@ -35,6 +40,7 @@ const propTypes = {
 const defaultProps = {
   columns: 0,
   rows: 0,
+  lines: null,
   children: null,
   generateChildren: false,
 };
@@ -46,20 +52,16 @@ const Container = styled("div")((props) => ({
   display: "grid",
   gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
   gridTemplateRows: `repeat(${props.rows}, 1fr)`,
-  alignItems: "center",
-  justifyItems: "center",
 
   ["& > *"]: {
-    //width: "100%",
-    //height: "100%",
     boxSizing: "border-box",
 
     [`&:not(:nth-child(${props.borderLeftException}))`]: {
-      borderLeft: "1px solid",
+      borderLeft: `${props.displayHorizontal ? "1px solid" : "none"}`,
     },
 
     [`&:not(:nth-child(${props.borderBottomException}))`]: {
-      borderBottom: "1px solid #000",
+      borderBottom: `${props.displayVertical ? "1px solid" : "none"}`,
     },
   },
 }));
@@ -68,10 +70,11 @@ const Container = styled("div")((props) => ({
  * Displays the component
  */
 const GridFauxLines = (props) => {
-  const { columns, rows, children, generateChildren } = props;
+  const { columns, rows, lines, children, generateChildren } = props;
 
   if (!children && !generateChildren) return null;
   if (columns === 0 || rows === 0) return null;
+  if (!lines) return null;
 
   const children2 = children
     ? children
@@ -86,6 +89,9 @@ const GridFauxLines = (props) => {
   const borderLeftException = `${columns}n - ${firstRow}`;
   const borderBottomException = `n + ${lastRow}`;
 
+  const displayVertical = lines === "both" || lines === "vertical";
+  const displayHorizontal = lines === "both" || lines === "horizontal";
+
   return (
     <Container
       className="GridFauxLines"
@@ -93,6 +99,8 @@ const GridFauxLines = (props) => {
       rows={rows}
       borderLeftException={borderLeftException}
       borderBottomException={borderBottomException}
+      displayVertical={displayVertical}
+      displayHorizontal={displayHorizontal}
     >
       {children2}
     </Container>
