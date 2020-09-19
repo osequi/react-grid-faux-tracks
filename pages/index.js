@@ -18,8 +18,8 @@ const useStyles = makeStyles({
 
 const Home = () => {
   const props = {
-    columns: 3,
-    rows: 3,
+    columns: 4,
+    rows: 4,
     lines: "both",
   };
 
