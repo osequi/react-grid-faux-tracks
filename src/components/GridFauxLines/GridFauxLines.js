@@ -57,11 +57,11 @@ const useStyles = makeStyles({
     ["&  > *"]: {
       boxSizing: "border-box",
 
-      ["& :not(:nth-child(props => props.borderLeftException))"]: {
+      [`&:not(:nth-child(3n-2))`]: {
         borderLeft: (props) => (props.displayHorizontal ? "1px solid" : "none"),
       },
 
-      ["& :not(:nth-child(props => props.borderBottomException))"]: {
+      [`&:not(:nth-child(${(props) => props.borderBottomException}))`]: {
         borderBottom: (props) => (props.displayVertical ? "1px solid" : "none"),
       },
     },
@@ -111,8 +111,17 @@ const getGridFauxLinesCss = (props) => {
 
   const displayHorizontal = lines === "both" || lines === "vertical";
   const displayVertical = lines === "both" || lines === "horizontal";
+  const borderLeftSelector = "&:not(:nth-child(3n-2))";
 
-  const { fauxLines } = useStyles(props);
+  console.log("borderLeftException:", borderLeftException);
+
+  const { fauxLines } = useStyles({
+    borderLeftException: borderLeftException,
+    borderBottomException: borderBottomException,
+    borderLeftSelector: borderLeftSelector,
+    displayVertical: displayVertical,
+    displayHorizontal: displayHorizontal,
+  });
 
   return fauxLines;
 };
