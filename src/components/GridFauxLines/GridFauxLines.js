@@ -57,11 +57,11 @@ const useStyles = makeStyles({
     ["&  > *"]: {
       boxSizing: "border-box",
 
-      ["&: not(: nth-child(props => props.borderLeftException))"]: {
+      ["& :not(:nth-child(props => props.borderLeftException))"]: {
         borderLeft: (props) => (props.displayHorizontal ? "1px solid" : "none"),
       },
 
-      ["&: not(: nth-child(props => props.borderBottomException))"]: {
+      ["& :not(:nth-child(props => props.borderBottomException))"]: {
         borderBottom: (props) => (props.displayVertical ? "1px solid" : "none"),
       },
     },

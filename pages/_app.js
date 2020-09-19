@@ -1,6 +1,28 @@
 import "./styles.css";
 
-// This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }) {
+/**
+ * Making Material UI work with Next.js
+ * @see https://itnext.io/next-js-with-material-ui-7a7f6485f671
+ */
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+
+export default function MyApp(props) {
+  const { Component, pageProps } = props;
+
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return <Component {...pageProps} />;
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};

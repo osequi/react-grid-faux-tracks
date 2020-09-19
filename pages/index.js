@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
+import shortid from "shortid";
 
 import GridFauxLines, {
   getGridFauxLinesCss,
@@ -35,7 +36,7 @@ const Home = () => {
         children={Array(16)
           .fill("x")
           .map((item, index) => {
-            return <span>{index + 1}</span>;
+            return <span key={shortid.generate()}>{index + 1}</span>;
           })}
       />
     </>
