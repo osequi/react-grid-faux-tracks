@@ -84,3 +84,13 @@ WithVerticalLines.args = {
   ...WithGenerateChildren.args,
   lines: "vertical",
 };
+
+export const WithGetGridFauxLinesCss = Template.bind({});
+WithGetGridFauxLinesCss.decorators = [
+  (Story) => (
+    <>
+      <p>Check `pages/index.js` for the demo</p>
+      <Story />
+    </>
+  ),
+];
