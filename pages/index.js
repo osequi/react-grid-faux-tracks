@@ -8,32 +8,30 @@ import GridFauxLines, {
 } from "../src/components/GridFauxLines";
 
 const useStyles = makeStyles({
-  container: {
+  container: (props) => ({
     display: "grid",
-    gridTemplateColumns: (props) => `repeat(${props.columns}, 1fr)`,
-    gridTemplateRows: (props) => `repeat(${props.rows}, 1fr)`,
-    ...getGridFauxLinesCss,
-  },
+    gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
+    gridTemplateRows: `repeat(${props.rows}, 1fr)`,
+  }),
 });
 
 const Home = () => {
   const props = {
-    columns: 4,
-    rows: 4,
+    columns: 3,
+    rows: 3,
     lines: "both",
   };
 
   const { container } = useStyles(props);
+  const fauxLines = getGridFauxLinesCss(props);
 
   return (
     <>
       <GridFauxLines {...props} generateChildren={true} />
+      <br />
       <section
-        className={clsx("Grid", container)}
-        columns={4}
-        rows={4}
-        lines="both"
-        children={Array(16)
+        className={clsx("Grid", container, fauxLines)}
+        children={Array(props.columns * props.rows)
           .fill("x")
           .map((item, index) => {
             return <span key={shortid.generate()}>{index + 1}</span>;

@@ -127,6 +127,8 @@ const getGridFauxLinesCss = (props) => {
     displayHorizontal: displayHorizontal,
   });
 
+  console.log("fauxLines:", fauxLines);
+
   return fauxLines;
 };
 
