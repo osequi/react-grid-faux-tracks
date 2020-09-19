@@ -6,6 +6,8 @@ import "./styles.css";
  */
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../src/theme";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -19,7 +21,11 @@ export default function MyApp(props) {
     }
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 MyApp.propTypes = {

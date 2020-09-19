@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import shortid from "shortid";
 
@@ -49,7 +49,7 @@ const defaultProps = {
 /**
  * Defines the styles
  */
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   /**
    * Creates the faux lines CSS
    */
@@ -57,7 +57,7 @@ const useStyles = makeStyles({
     ["&  > *"]: {
       boxSizing: "border-box",
 
-      [`&:not(:nth-child(3n-2))`]: {
+      [`${theme.custom.borderLeftSelector}`]: {
         borderLeft: (props) => (props.displayHorizontal ? "1px solid" : "none"),
       },
 
@@ -93,7 +93,7 @@ const useStyles = makeStyles({
   cellContent: {
     padding: "5em",
   },
-});
+}));
 
 /**
  * Returns the generated faux lines CSS.
@@ -103,6 +103,7 @@ const useStyles = makeStyles({
  */
 const getGridFauxLinesCss = (props) => {
   const { columns, rows, lines } = props;
+  const { theme } = useTheme();
 
   const lastRow = columns * rows - columns + 1;
   const firstRow = columns - 1;
