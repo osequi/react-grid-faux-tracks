@@ -1,0 +1,3 @@
+styled-components are hard to use. harder when object notation is used. many times we are forced to use plain css instead aka style literals.
+
+Switching to material-ui / full object notation
