@@ -108,7 +108,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/generator@^7.11.5", "@babel/generator@^7.11.6", "@babel/generator@^7.7.7", "@babel/generator@^7.9.6":
+"@babel/generator@^7.11.0", "@babel/generator@^7.11.5", "@babel/generator@^7.11.6", "@babel/generator@^7.7.7", "@babel/generator@^7.9.6":
   version "7.11.6"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.11.6.tgz#b868900f81b163b4d464ea24545c61cbac4dc620"
   dependencies:
@@ -313,7 +313,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.10.4", "@babel/parser@^7.11.5", "@babel/parser@^7.7.7", "@babel/parser@^7.9.6":
+"@babel/parser@^7.10.4", "@babel/parser@^7.11.2", "@babel/parser@^7.11.5", "@babel/parser@^7.7.7", "@babel/parser@^7.9.6":
   version "7.11.5"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.5.tgz#c7ff6303df71080ec7a4f5b8c003c58f1cf51037"
 
@@ -1384,7 +1384,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/addons@6.0.21":
+"@storybook/addons@6.0.21", "@storybook/addons@^6.0.16":
   version "6.0.21"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.0.21.tgz#bd5229652102c3aed59b78ef6920ff6b482b4d78"
   dependencies:
@@ -1398,7 +1398,7 @@
     global "^4.3.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/api@6.0.21":
+"@storybook/api@6.0.21", "@storybook/api@^6.0.16":
   version "6.0.21"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.0.21.tgz#a25a1eb4d07dc43500e03c856db43baba46726f1"
   dependencies:
@@ -1472,7 +1472,7 @@
     core-js "^3.0.1"
     global "^4.3.2"
 
-"@storybook/components@6.0.21":
+"@storybook/components@6.0.21", "@storybook/components@^6.0.16":
   version "6.0.21"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.0.21.tgz#2f355370f993e0b7b9062094a03dffc2cdda91db"
   dependencies:
@@ -2178,6 +2178,18 @@
     strip-ansi "^4.0.0"
     text-table "^0.2.0"
     webpack-log "^1.1.2"
+
+"@whitespace/storybook-addon-html@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@whitespace/storybook-addon-html/-/storybook-addon-html-2.0.1.tgz#e17f8f5b11310f1d030d7a69c0eb593c5b3b837a"
+  dependencies:
+    "@babel/generator" "^7.11.0"
+    "@babel/parser" "^7.11.2"
+    "@storybook/addons" "^6.0.16"
+    "@storybook/api" "^6.0.16"
+    "@storybook/components" "^6.0.16"
+    prettier "^2.0.5"
+    react-syntax-highlighter "^12.0.0"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -7021,7 +7033,7 @@ prettier@1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.5.3.tgz#59dadc683345ec6b88f88b94ed4ae7e1da394bfe"
 
-prettier@^2.1.2:
+prettier@^2.0.5, prettier@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
 
@@ -7384,7 +7396,7 @@ react-sizeme@^2.6.7:
     shallowequal "^1.1.0"
     throttle-debounce "^2.1.0"
 
-react-syntax-highlighter@^12.2.1:
+react-syntax-highlighter@^12.0.0, react-syntax-highlighter@^12.2.1:
   version "12.2.1"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-12.2.1.tgz#14d78352da1c1c3f93c6698b70ec7c706b83493e"
   dependencies:
