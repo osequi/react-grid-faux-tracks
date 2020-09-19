@@ -1,30 +1,34 @@
 import Head from "next/head";
-import styled, { css } from "styled-components";
+import { makeStyles } from "@material-ui/styles";
+import clsx from "clsx";
 
 import GridFauxLines, {
   getGridFauxLinesCss,
 } from "../src/components/GridFauxLines";
 
-const Grid = styled("section").attrs((props) => ({
-  style: {
+const useStyles = makeStyles({
+  container: {
     display: "grid",
-    gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
-    gridTemplateRows: `repeat(${props.rows}, 1fr)`,
+    gridTemplateColumns: (props) => `repeat(${props.columns}, 1fr)`,
+    gridTemplateRows: (props) => `repeat(${props.rows}, 1fr)`,
+    ...getGridFauxLinesCss,
   },
-}))`
-  ${getGridFauxLinesCss}
-`;
+});
 
 const Home = () => {
+  const props = {
+    columns: 3,
+    rows: 3,
+    lines: "both",
+  };
+
+  const { container } = useStyles(props);
+
   return (
     <>
-      <GridFauxLines
-        columns={3}
-        rows={3}
-        lines="both"
-        generateChildren={true}
-      />
-      <Grid
+      <GridFauxLines {...props} generateChildren={true} />
+      <section
+        className={clsx("Grid", container)}
         columns={4}
         rows={4}
         lines="both"
