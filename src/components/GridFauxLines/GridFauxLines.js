@@ -105,8 +105,6 @@ const getGridFauxLinesCss = (props) => {
   const { columns, rows, lines } = props;
   let theme = useTheme();
 
-  console.log("theme:", theme);
-
   const lastRow = columns * rows - columns + 1;
   const firstRow = columns - 1;
   const borderLeftException = `${columns}n - ${firstRow}`;
