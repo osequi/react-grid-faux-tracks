@@ -56,6 +56,18 @@ WithGenerateChildren.args = {
   generateChildren: true,
 };
 
+export const WithHorizontalLines = Template.bind({});
+WithHorizontalLines.args = {
+  ...WithGenerateChildren.args,
+  lines: "horizontal",
+};
+
+export const WithVerticalLines = Template.bind({});
+WithVerticalLines.args = {
+  ...WithGenerateChildren.args,
+  lines: "vertical",
+};
+
 export const WithChildrenProperlySet = Template.bind({});
 WithChildrenProperlySet.args = {
   ...WithAllPropsSet.args,
