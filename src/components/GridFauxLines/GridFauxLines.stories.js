@@ -48,3 +48,20 @@ WithAllPropsSet.args = {
   lines: "both",
   children: "Displays no grid since children is just a string",
 };
+
+export const WithGenerateChildren = Template.bind({});
+WithGenerateChildren.args = {
+  ...WithAllPropsSet.args,
+  children: null,
+  generateChildren: true,
+};
+
+export const WithChildrenProperlySet = Template.bind({});
+WithChildrenProperlySet.args = {
+  ...WithAllPropsSet.args,
+  children: Array(9)
+    .fill("x")
+    .map((item, index) => {
+      return <span>{index + 1}</span>;
+    }),
+};
