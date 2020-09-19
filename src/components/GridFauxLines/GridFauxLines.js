@@ -103,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
  */
 const getGridFauxLinesCss = (props) => {
   const { columns, rows, lines } = props;
-  let theme = useTheme();
 
   const lastRow = columns * rows - columns + 1;
   const firstRow = columns - 1;
@@ -115,6 +114,11 @@ const getGridFauxLinesCss = (props) => {
   const borderLeftSelector = `&:not(:nth-child(${borderLeftException}))`;
   const borderBottomSelector = `&:not(:nth-child(${borderBottomException}))`;
 
+  /**
+   * Cant's pass `props` to `[& ..]` selectors. Using `theme` instead.
+   * @see https://github.com/osequi/hacks/blob/master/CSS-in-JS.md#props-are-not-working-inside---selectors
+   */
+  let theme = useTheme();
   theme.custom.borderLeftSelector = borderLeftSelector;
   theme.custom.borderBottomSelector = borderBottomSelector;
 

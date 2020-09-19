@@ -1,4 +1,7 @@
 import React from "react";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../../theme";
+
 import GridFauxLines from "./GridFauxLines";
 
 export default {
@@ -6,7 +9,11 @@ export default {
   component: GridFauxLines,
 };
 
-const Template = (args) => <GridFauxLines {...args} />;
+const Template = (args) => (
+  <ThemeProvider theme={theme}>
+    <GridFauxLines {...args} />
+  </ThemeProvider>
+);
 
 export const Default = Template.bind({});
 Default.decorators = [
