@@ -65,6 +65,46 @@ const GridFauxLinesCss = css`
 `;
 
 /**
+ * Returns the generated faux lines CSS.
+ * Many times the parent will need just a CSS instead of a rendered component.
+ * @param  {object} props The props
+ * @return {string}       The CSS
+ */
+const getGridFauxLinesCss = (props) => {
+  const { columns, rows, lines } = props;
+
+  console.log("props:", props);
+
+  const lastRow = columns * rows - columns + 1;
+  const firstRow = columns - 1;
+  const borderLeftException = `${columns}n - ${firstRow}`;
+  const borderBottomException = `n + ${lastRow}`;
+
+  const displayHorizontal = lines === "both" || lines === "vertical";
+  const displayVertical = lines === "both" || lines === "horizontal";
+
+  const result = `
+    & > * {
+      box-sizing: "border-box";
+
+      &: not(: nth-child(${(props) => props.borderLeftException})) {
+        border-left: ${(props) =>
+          props.displayHorizontal ? "1px solid" : "none"};
+      }
+
+      &: not(: nth-child(${(props) => props.borderBottomException})) {
+        border-bottom: ${(props) =>
+          props.displayVertical ? "1px solid" : "none"};
+      }
+    }
+  `;
+
+  console.log("result:", result);
+
+  return result;
+};
+
+/**
  * Styles the component container
  */
 const Container = styled("div").attrs((props) => ({
@@ -147,4 +187,5 @@ export default GridFauxLines;
 export {
   propTypes as GridFauxLinesPropTypes,
   defaultProps as GridFauxLinesDefaultProps,
+  getGridFauxLinesCss,
 };

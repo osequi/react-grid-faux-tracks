@@ -1,5 +1,6 @@
 export {
   default,
   GridFauxLinesPropTypes,
-  GridFauxLinesDefaultProps
+  GridFauxLinesDefaultProps,
+  getGridFauxLinesCss,
 } from "./GridFauxLines";
